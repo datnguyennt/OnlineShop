@@ -77,3 +77,10 @@ E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\obj\Debug\ShopOnline.csproj.Cor
 E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\obj\Debug\ShopOnline.csproj.CopyComplete
 E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\obj\Debug\ShopOnline.dll
 E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\obj\Debug\ShopOnline.pdb
+E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\EntityFramework.dll
+E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\EntityFramework.SqlServer.dll
+E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\Models.dll
+E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\Models.pdb
+E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\Models.dll.config
+E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\EntityFramework.xml
+E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\EntityFramework.SqlServer.xml
