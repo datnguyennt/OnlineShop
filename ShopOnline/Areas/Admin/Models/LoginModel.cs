@@ -10,10 +10,12 @@ namespace ShopOnline.Areas.Admin.Models
     {
         [Key]
         [StringLength(50)]
+        [Required(ErrorMessage = "Không được để trống username")]
         public string UserName { get; set; }
 
-        [Required]
         [StringLength(50)]
+        [Required(ErrorMessage ="Không được để trống mật khẩu")]
         public string UserPassword { get; set; }
+        public bool RemmemberMe { get; set; }
     }
 }

@@ -1,7 +1,4 @@
-$(function () {
-	$('#AlertBox').removeClass('hide');
-	$('#AlertBox').delay(2000).slideUp(500);
-});
+
 /*!
  * jQuery JavaScript Library v3.5.1
  * https://jquery.com/

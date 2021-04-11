@@ -2,6 +2,7 @@
 using Models.EF;
 using ShopOnline.Areas.Admin.Models;
 using ShopOnline.Common;
+using ShopOnline.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,32 +29,39 @@ namespace ShopOnline.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(LoginUser model)
+        public ActionResult Create(User model)
         {
             if (ModelState.IsValid)
             {
                 var dao = new UserLoginDAO();
 
-                if (dao.Find(model.UserName) != null)
+                var pass = Encryptor.MD5Hash(model.Password);
+                model.Password = pass;
+                var result = dao.GetById(model.Username);
+                if (result == 1)
                 {
-                    return RedirectToAction("Create", "User");
-                }
+                    this.AddNotification("Tài khoản bị trùng", NotificationType.ERROR);
 
-                var pass = Encryptor.MD5Hash(model.UserPassword);
-                model.UserPassword = pass;
-                var result = dao.Insert(model);
-                if (!string.IsNullOrEmpty(result))
-                {
-                    SetAlert("Tạo người dùng thành công", "warning");
-                    return RedirectToAction("Index", "User");
                 }
                 else
                 {
-                    SetAlert("NGười dùng đã tồn tại, thử lại với tên khác", "warning");
-                    //ModelState.AddModelError("", "Tạo người dùng không thành công");
+                    long id = dao.Insert(model);
+                    if (id > 0)
+                    {
+                        this.AddNotification("Thêm người dùng thành công", NotificationType.SUCCESS);
+                        return RedirectToAction("Index", "User");
+                    }
+                    else
+                    {
+
+                        this.AddNotification("Thêm thất bại", NotificationType.ERROR);
+                        //return RedirectToAction("Create", "User");
+                    }
                 }
+
+
             }
-            return View();
+            return View("Create");
         }
     }
 }

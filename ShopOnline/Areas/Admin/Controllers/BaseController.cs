@@ -13,10 +13,11 @@ namespace ShopOnline.Areas.Admin.Controllers
     {
         protected override void OnActionExecuted(ActionExecutedContext filterContext)
         {
-            var session = Session[Constants.USER_SEESION];
+            var session = (UserLogin)Session[Constants.USER_SEESION];
             if (session == null)
             {
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Login", action = "Index", Areas = "Login" }));
+                filterContext.Result = new RedirectToRouteResult(new 
+                    RouteValueDictionary(new { controller = "Login", action = "Index", Areas = "Login" }));
             }
             base.OnActionExecuted(filterContext);
         }

@@ -5,9 +5,8 @@ using System.Web;
 
 namespace ShopOnline.Common
 {
-    public class Constants
+    public static class Constants
     {
         public const String USER_SEESION = "USER_SESSION";
-        
     }
 }

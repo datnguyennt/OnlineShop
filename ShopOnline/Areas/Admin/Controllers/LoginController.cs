@@ -1,6 +1,7 @@
 ﻿using Models.DAO;
 using ShopOnline.Areas.Admin.Models;
 using ShopOnline.Common;
+using ShopOnline.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,14 +33,29 @@ namespace ShopOnline.Areas.Admin.Controllers
                 var result = dao.LoginUser(model.UserName, Encryptor.MD5Hash(model.UserPassword));
                 if (result == 1)
                 {
-                    //ModelState.AddModelError("","Login Successfully");
-                    Session.Add(Constants.USER_SEESION, model.UserName);
+                    var user = dao.GetByID(model.UserName);
+                    var userSession = new UserLogin();
+                    userSession.UserName = user.Username;
+                    userSession.UserID = user.UserID;
+                    Session.Add(Constants.USER_SEESION, userSession);
                     Session["UserName"] = model.UserName.ToString();
                     return RedirectToAction("Index", "Home");
                 }
-                else
+                else if (result == 0)
                 {
-                    ModelState.AddModelError("", "Sai ");
+                    this.AddNotification("Tài khoản không tồn tại", NotificationType.ERROR);
+                }
+                else if (result == -1)
+                {
+                    this.AddNotification("Tài khoản đang bị khóa", NotificationType.ERROR);
+                }
+                else if (result == -2)
+                {
+                    this.AddNotification("Sai mật khẩu", NotificationType.ERROR);
+
+                }else
+                {
+                    this.AddNotification("Sai tên đăng nhập", NotificationType.ERROR);
                 }
             }
             return View("Index");

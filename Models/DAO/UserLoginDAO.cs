@@ -9,16 +9,50 @@ namespace Models.DAO
 {
     public class UserLoginDAO
     {
-        WebDbContext context;
+        WebDbContext db = null;
 
         public UserLoginDAO()
         {
-            context = new WebDbContext();
+            db = new WebDbContext();
         }
 
         public int LoginUser(String UserName, String UserPassword)
         {
-            var result = context.LoginUser.SingleOrDefault(x => x.UserName.Contains(UserName) && x.UserPassword.Contains(UserPassword));
+            var result = db.User.SingleOrDefault(x => x.Username == UserName);
+            if (result == null)
+            {
+                return 0;
+            }
+            else
+            {
+                if (result.Status == false)
+                {
+                    return -1;
+                }
+                else
+                {
+                    if (result.Password == UserPassword)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return -2;
+                    }
+                }
+            }
+        }
+
+        public long Insert(User loginUser)
+        {
+            db.User.Add(loginUser);
+            db.SaveChanges();
+            return loginUser.UserID;
+        }
+
+        public int GetById(string userName)
+        {
+            var result = db.User.SingleOrDefault(x => x.Username == userName);
             if (result == null)
             {
                 return 0;
@@ -28,22 +62,14 @@ namespace Models.DAO
                 return 1;
             }
         }
-
-        public string Insert(LoginUser loginUser)
+        public User GetByID(string userName)
         {
-            context.LoginUser.Add(loginUser);
-            context.SaveChanges();
-            return loginUser.UserName;
+            return db.User.SingleOrDefault(x => x.Username.Contains(userName));
         }
 
-        public LoginUser Find(string user)
+        public List<User> ListAll()
         {
-            return context.LoginUser.Find(user);
-        }
-
-        public List<LoginUser> ListAll()
-        {
-            return context.LoginUser.ToList();
+            return db.User.ToList();
         }
 
     }

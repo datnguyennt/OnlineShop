@@ -254,14 +254,16 @@
 
                 <!-- End of Topbar -->
                 <!-- Begin Page Content -->
-                @RenderSection("header", required: false)
 
-                @if (TempData["AlertMessage"] != null)
-                {
-                    <div id="AlertBox" class="alert @TempData["AlertType"] hide" role="alert">
-                        @TempData["AlertMessage"]
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">@RenderSection("header", required: true)</h1>
                     </div>
-                }
+
+                </div>
+                @Html.Partial("_Notifications")
                 @RenderBody()
                 <!-- /.container-fluid -->
 
@@ -313,18 +315,6 @@
     <script src="~/Assets/Admin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="~/Assets/Admin/vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="~/Assets/Admin/js/demo/chart-area-demo.js"></script>
-    <script src="~/Assets/Admin/js/demo/chart-pie-demo.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="~/Assets/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="~/Assets/Admin/js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
     <script src="~/Assets/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="~/Assets/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
@@ -334,10 +324,3 @@
 
 </html>
 
-<script>
-    $(function () {
-        $('#AlertBox').removeClass('hide');
-        $('#AlertBox').delay(2000).slideUp(500);
-    });
-
-</script>

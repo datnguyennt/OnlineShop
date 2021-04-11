@@ -1,4 +1,5 @@
 ﻿using ShopOnline.Common;
+using ShopOnline.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 
 namespace ShopOnline.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: Admin/Home
         public ActionResult Index()
@@ -17,6 +18,7 @@ namespace ShopOnline.Areas.Admin.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+            
             return View();
         }
         public ActionResult Logout()

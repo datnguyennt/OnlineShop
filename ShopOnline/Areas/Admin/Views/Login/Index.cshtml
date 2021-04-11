@@ -28,6 +28,7 @@
 
 <body class="bg-gradient-primary">
 
+
     <div class="container">
 
         <!-- Outer Row -->
@@ -49,7 +50,7 @@
                                     @using (Html.BeginForm())
                                     {
                                         @Html.AntiForgeryToken()
-                                        @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+                                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
                                         <div class="form-group">
                                             @Html.TextBoxFor(model => model.UserName, new { @class = "form-control form-control-user", @placeholder = "Nhập tên đăng nhập", @autofocus = "autofocus" })
                                             @*<input type="email" class="form-control form-control-user"
@@ -59,23 +60,25 @@
                                         <div class="form-group">
                                             @*<input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">*@
-                                            @Html.TextBoxFor(model => model.UserPassword, new { @class = "form-control form-control-user", @placeholder = "Nhập mật khậu", @type = "password" })
+                                            @Html.PasswordFor(model => model.UserPassword, new { @class = "form-control form-control-user", @placeholder = "Nhập mật khẩu" })
 
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                @*<input type="checkbox" class="custom-control-input" id="customCheck">*@
+                                                @Html.CheckBoxFor(model => model.RemmemberMe, new { @class = "custom-control-input" })
                                                 <label class="custom-control-label" for="customCheck">
                                                     Remember
                                                     Me
                                                 </label>
                                             </div>
                                         </div>
-                                        <input type="submit" name="submit" class="btn btn-primary btn-user btn-block" value="Login" />
+                                        <input type="submit" name="submit" class="btn btn-primary btn-user btn-block" value="Đăng nhập" />
                                         @*<a href="#" class="btn btn-primary btn-user btn-block">
                                                 Đăng Nhập
                                             </a>*@
                                         <hr>
+                                        @Html.Partial("_Notifications")
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>

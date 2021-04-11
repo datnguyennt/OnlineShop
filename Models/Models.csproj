@@ -53,8 +53,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\UserLoginDAO.cs" />
-    <Compile Include="EF\LoginUser.cs" />
+    <Compile Include="EF\About.cs" />
+    <Compile Include="EF\Contact.cs" />
+    <Compile Include="EF\Customer.cs" />
+    <Compile Include="EF\Feedback.cs" />
+    <Compile Include="EF\Footer.cs" />
+    <Compile Include="EF\Menu.cs" />
+    <Compile Include="EF\MenuType.cs" />
+    <Compile Include="EF\New.cs" />
+    <Compile Include="EF\NewCategory.cs" />
+    <Compile Include="EF\ProductCategory.cs" />
+    <Compile Include="EF\Products.cs" />
+    <Compile Include="EF\Slider.cs" />
+    <Compile Include="EF\sysdiagrams.cs" />
+    <Compile Include="EF\SystemConfig.cs" />
+    <Compile Include="EF\Tag.cs" />
+    <Compile Include="EF\User.cs" />
     <Compile Include="EF\WebDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
