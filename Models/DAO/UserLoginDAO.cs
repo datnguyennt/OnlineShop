@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
+using PagedList;
 
 namespace Models.DAO
 {
@@ -49,6 +51,26 @@ namespace Models.DAO
             db.SaveChanges();
             return loginUser.UserID;
         }
+        public bool Update(User entity)
+        {
+            try
+            {
+                var user = db.User.Find(entity.UserID);
+                user.FirstName = entity.FirstName;
+                user.LastName = entity.LastName;
+                user.Address = entity.Address;
+                user.Email = entity.Email;
+                user.Phone = entity.Phone;
+                user.Status = entity.Status;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
+        }
 
         public int GetById(string userName)
         {
@@ -65,6 +87,15 @@ namespace Models.DAO
         public User GetByID(string userName)
         {
             return db.User.SingleOrDefault(x => x.Username.Contains(userName));
+        }
+
+        public User ViewDetail(int id)
+        {
+            return db.User.Find(id);
+        }
+        public IEnumerable<User> ListAllPaging(int page, int pageSize)
+        {
+            return db.User.ToPagedList(page, pageSize);
         }
 
         public List<User> ListAll()

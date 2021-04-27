@@ -17,5 +17,7 @@ namespace ShopOnline.Areas.Admin.Models
         [Required(ErrorMessage ="Không được để trống mật khẩu")]
         public string UserPassword { get; set; }
         public bool RemmemberMe { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

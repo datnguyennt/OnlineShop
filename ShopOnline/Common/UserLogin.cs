@@ -11,5 +11,8 @@ namespace ShopOnline.Common
         public long UserID { get; set; }
         public string UserName { get; set; }
         public string UserPassword { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
     }
-}   
+}

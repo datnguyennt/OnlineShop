@@ -16,8 +16,8 @@ namespace ShopOnline.Areas.Admin.Controllers
         // GET: Admin/User
         public ActionResult Index()
         {
-            var user = new UserLoginDAO();
-            var model = user.ListAll();
+            var dao = new UserLoginDAO();
+            var model = dao.ListAll();
 
             return View(model);
         }
@@ -62,6 +62,39 @@ namespace ShopOnline.Areas.Admin.Controllers
 
             }
             return View("Create");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var user = new UserLoginDAO().ViewDetail(id);
+
+            return View(user);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(User model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new UserLoginDAO();
+
+                var pass = Encryptor.MD5Hash(model.Password);
+                model.Password = pass;
+                var result = dao.Update(model);
+                if (result)
+                {
+                    this.AddNotification("Cập nhật thành công", NotificationType.SUCCESS);
+                    return RedirectToAction("Index", "User");
+                }
+                else
+                {
+                    this.AddNotification("Cập nhật thất bại", NotificationType.ERROR);
+                }
+
+
+            }
+            return View("Index");
         }
     }
 }

@@ -37,8 +37,9 @@ namespace ShopOnline.Areas.Admin.Controllers
                     var userSession = new UserLogin();
                     userSession.UserName = user.Username;
                     userSession.UserID = user.UserID;
+                    userSession.FirstName = user.FirstName;
                     Session.Add(Constants.USER_SEESION, userSession);
-                    Session["UserName"] = model.UserName.ToString();
+                    Session["UserName"] = user.LastName + " "+ user.FirstName;
                     return RedirectToAction("Index", "Home");
                 }
                 else if (result == 0)

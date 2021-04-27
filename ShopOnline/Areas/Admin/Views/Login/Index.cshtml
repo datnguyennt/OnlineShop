@@ -2,118 +2,84 @@
 @{
     Layout = null;
 }
-
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <title>Sufee Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Đăng Nhập Nek</title>
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico" />
 
-    <!-- Custom fonts for this template-->
-    <link href="~/Assets/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-          rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/Admin/vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/Assets/Admin/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/vendors/selectFX/css/cs-skin-elastic.css">
 
-    <!-- Custom styles for this template-->
-    <link href="~/Assets/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Assets/Admin/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-dark">
 
 
-    <div class="container">
-
-        <!-- Outer Row -->
-        <div class="row justify-content-center">
-
-            <div class="col-xl-10 col-lg-12 col-md-9">
-
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Đăng Nhập Đi Nè</h1>
-                                    </div>
-                                    @*<form class="user">*@
-                                    @using (Html.BeginForm())
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
-                                        <div class="form-group">
-                                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control form-control-user", @placeholder = "Nhập tên đăng nhập", @autofocus = "autofocus" })
-                                            @*<input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">*@
-                                        </div>
-                                        <div class="form-group">
-                                            @*<input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">*@
-                                            @Html.PasswordFor(model => model.UserPassword, new { @class = "form-control form-control-user", @placeholder = "Nhập mật khẩu" })
-
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                @*<input type="checkbox" class="custom-control-input" id="customCheck">*@
-                                                @Html.CheckBoxFor(model => model.RemmemberMe, new { @class = "custom-control-input" })
-                                                <label class="custom-control-label" for="customCheck">
-                                                    Remember
-                                                    Me
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <input type="submit" name="submit" class="btn btn-primary btn-user btn-block" value="Đăng nhập" />
-                                        @*<a href="#" class="btn btn-primary btn-user btn-block">
-                                                Đăng Nhập
-                                            </a>*@
-                                        <hr>
-                                        @Html.Partial("_Notifications")
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
-                                    }
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <a href="#">
+                        <img class="align-content" src="~/Assets/Admin/images/logo_ute.png" alt="" width="60" height="60">
+                    </a>
                 </div>
+                <div class="login-form">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                        @*<form>*@
+                        <div class="form-group">
+                            @*<label>Email address</label>*@
+                            @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
+                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control form-control-user", @placeholder = "Nhập tên đăng nhập", @autofocus = "autofocus" })
 
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserPassword, new { @class = "control-label col-md-2" })
+                            @Html.PasswordFor(model => model.UserPassword, new { @class = "form-control form-control-user", @placeholder = "Nhập mật khẩu" })
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                @Html.CheckBoxFor(model => model.RemmemberMe, new { @class = "custom-control-input" })
+                            </label>
+                            <label class="pull-right">
+                                <a href="#">Forgotten Password?</a>
+                            </label>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Đăng nhập</button>
+                        @Html.Partial("_Notifications")
+                        @*</form>*@
+                    }
+                </div>
             </div>
-
         </div>
-
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="~/Assets/Admin/vendor/jquery/jquery.min.js"></script>
-    <script src="~/Assets/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="~/Assets/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/Assets/Admin/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/Assets/Admin/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/Assets/Admin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Assets/Admin/assets/js/main.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="~/Assets/Admin/js/sb-admin-2.min.js"></script>
 
 </body>
 

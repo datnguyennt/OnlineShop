@@ -84,3 +84,7 @@ E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\Models.pdb
 E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\Models.dll.config
 E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\EntityFramework.xml
 E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\EntityFramework.SqlServer.xml
+E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\PagedList.dll
+E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\PagedList.Mvc.dll
+E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\PagedList.xml
+E:\Project\CSharp\THUCHANH\ShopOnline\ShopOnline\bin\PagedList.Mvc.xml

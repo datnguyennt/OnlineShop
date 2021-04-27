@@ -10,3 +10,7 @@ E:\Project\CSharp\THUCHANH\ShopOnline\Models\obj\Debug\Models.csproj.CoreCompile
 E:\Project\CSharp\THUCHANH\ShopOnline\Models\obj\Debug\Models.csproj.CopyComplete
 E:\Project\CSharp\THUCHANH\ShopOnline\Models\obj\Debug\Models.dll
 E:\Project\CSharp\THUCHANH\ShopOnline\Models\obj\Debug\Models.pdb
+E:\Project\CSharp\THUCHANH\ShopOnline\Models\bin\Debug\PagedList.dll
+E:\Project\CSharp\THUCHANH\ShopOnline\Models\bin\Debug\PagedList.Mvc.dll
+E:\Project\CSharp\THUCHANH\ShopOnline\Models\bin\Debug\PagedList.xml
+E:\Project\CSharp\THUCHANH\ShopOnline\Models\bin\Debug\PagedList.Mvc.xml

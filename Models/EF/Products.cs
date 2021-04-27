@@ -1,7 +1,8 @@
-namespace Models.EF
+﻿namespace Models.EF
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -12,9 +13,11 @@ namespace Models.EF
         public int ProductID { get; set; }
 
         [StringLength(10)]
+        [DisplayName("Mã sản phẩm")]
         public string ProductCode { get; set; }
 
         [StringLength(250)]
+        [DisplayName("Tên sản phẩm")]
         public string ProductName { get; set; }
 
         [StringLength(250)]
@@ -29,11 +32,14 @@ namespace Models.EF
         [Column(TypeName = "xml")]
         public string MoreImages { get; set; }
 
+        [DisplayName("Giá")]
         public decimal? Price { get; set; }
 
         public decimal? PromotionPrice { get; set; }
 
         public bool? IncludeVAT { get; set; }
+
+        [DisplayName("Số lượng")]
 
         public int? Quantity { get; set; }
 
